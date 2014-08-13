@@ -42,4 +42,22 @@ class TicketCustomFieldValue extends BaseEntity {
     {
         return $this->value;
     }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this->addChange('id');
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+        return $this->addChange('value');
+    }
 }
