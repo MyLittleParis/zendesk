@@ -12,7 +12,6 @@ namespace Dlin\Zendesk\Entity;
 
 class TicketComment extends BaseEntity
 {
-
     /**
      * Automatically assigned when creating events
      * @var integer
@@ -61,22 +60,6 @@ class TicketComment extends BaseEntity
      * @readonly
      */
     protected $author_id;
-
-    /**
-     * The attachments on this comment as Attachment objects
-     * @var array
-     * @readonly
-     * @element \Dlin\Zendesk\Entity\Attachement
-     */
-    protected $attachments;
-
-    /**
-     * @return array
-     */
-    public function getAttachments()
-    {
-        return $this->attachments;
-    }
 
     /**
      * @return int
@@ -132,15 +115,6 @@ class TicketComment extends BaseEntity
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @param array $attachments
-     */
-    public function setAttachments($attachments)
-    {
-        $this->attachments = $attachments;
-        return $this->addChange('attachments');
     }
 
     /**
