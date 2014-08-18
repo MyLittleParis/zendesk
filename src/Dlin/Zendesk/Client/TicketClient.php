@@ -1,9 +1,9 @@
 <?php
 /**
  *
- * User: davidlin
- * Date: 7/11/2013
- * Time: 10:47 PM
+ * User: matks
+ * Date: 18/8/2014
+ * Time: 11:00 AM
  *
  */
 
@@ -12,6 +12,8 @@ namespace Dlin\Zendesk\Client;
 
 use Dlin\Zendesk\Entity\Ticket;
 use Dlin\Zendesk\Entity\TicketRequester;
+use Dlin\Zendesk\Entity\TicketComment;
+
 use Dlin\Zendesk\Search\TicketFilter;
 
 class TicketClient extends BaseClient
@@ -107,7 +109,6 @@ class TicketClient extends BaseClient
         return $this->getCollection("users/$user_id/tickets/ccd.json",'tickets', $page, $per_page);
     }
 
-
     /**
      * Search tickets
      *
@@ -138,8 +139,18 @@ class TicketClient extends BaseClient
         return parent::saveEntity($ticket, 'tickets.json', $extraData);
     }
 
+    /**
+     * @param Ticket $ticket
+     * @return \Dlin\Zendesk\Result\ChangeResult|null
+     */
+    public function addComment(Ticket $ticket, TicketComment $comment)
+    {
+        $ticket_id = $ticket->getId();
 
+        $extraData = array('comment' => $comment);
 
+        return parent::saveEntity($ticket, "tickets/$ticket_id.json", $extraData);
+    }
 
     /**
      *

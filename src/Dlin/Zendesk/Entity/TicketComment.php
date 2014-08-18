@@ -1,9 +1,9 @@
 <?php
 /**
  *
- * User: davidlin
- * Date: 11/11/2013
- * Time: 10:59 PM
+ * User: matks
+ * Date: 18/8/2014
+ * Time: 11:04 AM
  *
  */
 
@@ -153,7 +153,12 @@ class TicketComment extends BaseEntity
         return $this->addChange('protected');
     }
 
-
-
-
+    /**
+     * @param string $author_id
+     */
+    public function setAuthorId($author_id)
+    {
+        $this->author_id = $author_id;
+        return $this->addChange('author_id');
+    }
 }
