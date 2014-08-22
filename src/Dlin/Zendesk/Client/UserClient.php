@@ -10,6 +10,7 @@
 namespace Dlin\Zendesk\Client;
 
 use Dlin\Zendesk\Entity\User;
+use Dlin\Zendesk\Search\UserFilter;
 
 class UserClient extends BaseClient
 {
@@ -33,5 +34,22 @@ class UserClient extends BaseClient
     public function getOneById($id)
     {
         return $this->getOne("users/$id.json");
+    }
+
+    /**
+     * Search users
+     *
+     * @param TicketFilter $query
+     * @param int $page
+     * @param int $per_page
+     * @param null $sort_by
+     * @param string $sort_order
+     * @return \Dlin\Zendesk\Result\PaginatedResult
+     */
+    public function search(UserFilter $query, $page=1, $per_page=100, $sort_by=null, $sort_order='asc')
+    {
+        $endPoint = 'search.json?query='.rawurlencode(implode(' ',$query->toArray()));
+
+        return $this->getCollection($endPoint, 'results', $page, $per_page, $sort_by, $sort_order);
     }
 }
