@@ -2,6 +2,7 @@
 .DS_STORE
 coverage
 .idea
+/nbproject/
 
 
 # Ignore potentially sensitive phpunit file

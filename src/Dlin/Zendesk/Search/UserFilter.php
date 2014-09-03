@@ -1,10 +1,10 @@
 <?php
 /**
- * 
+ *
  * User: matks
  * Date: 22/8/2014
  * Time: 12:36 AM
- * 
+ *
  */
 
 namespace Dlin\Zendesk\Search;
@@ -13,9 +13,11 @@ namespace Dlin\Zendesk\Search;
  * Class UserFilter
  * @package Dlin\Zendesk\Search
  */
-class UserFilter extends BaseFilter {
+class UserFilter extends BaseFilter
+{
 
-    public function getType(){
+    public function getType()
+    {
         return 'user';
     }
 
@@ -42,7 +44,7 @@ class UserFilter extends BaseFilter {
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $name
      */
     public function setName($name)
     {
@@ -50,7 +52,7 @@ class UserFilter extends BaseFilter {
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $phone
      */
     public function setPhone($phone)
     {
@@ -58,7 +60,7 @@ class UserFilter extends BaseFilter {
     }
 
     /**
-     * @param mixed $email
+     * @param mixed $external_id
      */
     public function setExternalId($external_id)
     {
