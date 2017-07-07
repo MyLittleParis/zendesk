@@ -62,6 +62,13 @@ class TicketComment extends BaseEntity
     protected $author_id;
 
     /**
+     * is public
+     * @var boolean
+     * @readonly
+     */
+    protected $public;
+
+    /**
      * @return int
      */
     public function getAuthorId()
@@ -116,6 +123,14 @@ class TicketComment extends BaseEntity
     {
         return $this->type;
     }
+    
+    /**
+     * @return boolean
+     */
+    public function getPublic()
+    {
+        return $this->public;
+    }
 
     /**
      * @param string $body
@@ -160,5 +175,14 @@ class TicketComment extends BaseEntity
     {
         $this->author_id = $author_id;
         return $this->addChange('author_id');
+    }
+    
+    /**
+     * @param boolean $public
+     */
+    public function setPublic($public)
+    {
+        $this->public = $public;
+        return $this->addChange('public');
     }
 }
